@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I'm 資想被用心呵護的工主殿下 | NTU CSIE × IM × PSY × NUR 四系聯合迎新宿營</title>
+<link rel="icon" type="image/png" href="assets/avatar.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #d8577f;
+    --rose-dark: #b83f66;
+    --blue: #7fa5d6;
+    --gold: #cda355;
+    --gold-light: #e8cf9c;
+    --wine: #4a1524;
+    --wine-deep: #34101a;
+    --light-bg: #fdf5f3;
+    --text: #3a2a30;
+    --radius: 18px;
+    --shadow: 0 10px 30px rgba(74,21,36,0.1);
+    --font-serif: "Noto Serif TC", serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    color: var(--text);
+    background: var(--light-bg);
+    line-height: 1.7;
+  }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  img { max-width: 100%; display: block; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 90px 0; position: relative; }
+  h2.section-title {
+    font-family: var(--font-serif);
+    font-size: 2.3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--wine);
+  }
+  p.section-sub {
+    text-align: center;
+    color: #8a7178;
+    margin-bottom: 24px;
+    font-size: 1.05rem;
+  }
+  /* rose divider */
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 46px;
+  }
+  .divider::before, .divider::after {
+    content: "";
+    height: 1px;
+    width: 70px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .divider span { color: var(--rose); font-size: 1.1rem; }
+
+  .btn {
+    display: inline-block;
+    padding: 14px 34px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-primary {
+    background: linear-gradient(120deg, var(--rose), var(--rose-dark));
+    color: #fff;
+    box-shadow: 0 8px 22px rgba(184,63,102,0.4);
+  }
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 2px solid var(--gold-light);
+  }
+  .btn:hover { transform: translateY(-3px); box-shadow: 0 4px 18px rgba(205,163,85,0.5); }
+
+  /* Navbar */
+  header.navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 999;
+    background: rgba(253,245,243,0.92);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 2px 14px rgba(74,21,36,0.08);
+    border-bottom: 1px solid rgba(205,163,85,0.25);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px 24px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 0 1 auto; margin-right: 16px; }
+  .logo img {
+    width: 42px; height: 42px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--gold-light);
+  }
+  .logo span {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: clamp(.8rem, 1.8vw, 1.15rem);
+    letter-spacing: .01em;
+    color: var(--wine);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+  .nav-links {
+    display: flex;
+    gap: clamp(10px, 1.4vw, 20px);
+    font-weight: 600;
+    font-size: .9rem;
+    flex-shrink: 0;
+  }
+  .nav-links li { white-space: nowrap; }
+  .nav-links a { transition: color .2s; white-space: nowrap; }
+  .nav-links a:hover { color: var(--rose); }
+  .nav-cta {
+    background: linear-gradient(120deg, var(--rose), var(--rose-dark));
+    color: #fff;
+    padding: 9px 18px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: .92rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  @media (max-width: 480px) {
+    .nav-cta { padding: 8px 14px; font-size: .85rem; }
+  }
+  .nav-toggle { display: none; font-size: 1.6rem; cursor: pointer; color: var(--wine); }
+
+  @media (max-width: 1000px) {
+    .nav-links { position: absolute; top: 100%; left: 0; right: 0; background: #fff; flex-direction: column; padding: 20px 24px; gap: 16px; display: none; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+    .nav-links.open { display: flex; }
+    .nav-toggle { display: block; }
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    background:
+      linear-gradient(160deg, rgba(52,16,26,0.55), rgba(74,21,36,0.4) 55%, rgba(52,16,26,0.6)),
+      url('assets/main-visual.jpg') center 22%/cover no-repeat;
+    padding: 120px 24px 60px;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid var(--gold-light);
+    color: var(--gold-light);
+    padding: 6px 18px;
+    border-radius: 999px;
+    font-size: .85rem;
+    margin-bottom: 22px;
+    letter-spacing: .05em;
+  }
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.1rem, 5vw, 3.6rem);
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 24px rgba(0,0,0,0.65);
+  }
+  .hero p.desc { font-size: 1.1rem; margin-bottom: 34px; opacity: .95; text-shadow: 0 2px 10px rgba(0,0,0,0.4); }
+  .hero-btns { display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; }
+
+  /* Countdown */
+  .countdown-wrap {
+    background: linear-gradient(180deg, var(--wine-deep), var(--wine));
+    color: #fff;
+    text-align: center;
+    padding: 60px 0;
+    border-top: 1px solid rgba(205,163,85,0.3);
+    border-bottom: 1px solid rgba(205,163,85,0.3);
+  }
+  .countdown-wrap h3 {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+    color: var(--gold-light);
+  }
+  .countdown {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .countdown .box {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(205,163,85,0.35);
+    border-radius: var(--radius);
+    padding: 24px 30px;
+    min-width: 100px;
+  }
+  .countdown .box .num {
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--rose);
+  }
+  .countdown .box .label { font-size: .85rem; opacity: .85; margin-top: 6px; color: var(--gold-light); }
+
+  /* Departments */
+  #depts { background: linear-gradient(180deg, #fdf5f3, #fbe9ee); }
+  .dept-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 900px) { .dept-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .dept-grid { grid-template-columns: 1fr; } }
+  .dept-card {
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 34px 20px;
+    text-align: center;
+    transition: transform .25s ease, box-shadow .25s ease;
+    border-top: 3px solid var(--gold);
+  }
+  .dept-card:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 18px 40px rgba(74,21,36,0.2); }
+  .dept-card .icon {
+    width: 64px; height: 64px;
+    line-height: 64px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), var(--rose));
+    color: #fff;
+    font-weight: 900;
+    font-size: 1.05rem;
+  }
+  .dept-card h3 { font-family: var(--font-serif); font-size: 1.15rem; margin-bottom: 8px; color: var(--wine); }
+  .dept-card p { color: #8a7178; font-size: .9rem; }
+
+  /* Schedule */
+  .schedule-day {
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 30px 32px;
+    margin-bottom: 24px;
+    border-left: 4px solid var(--rose);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .schedule-day:hover { transform: scale(1.02); box-shadow: 0 18px 40px rgba(74,21,36,0.2); }
+  .schedule-day h3 {
+    font-family: var(--font-serif);
+    color: var(--rose-dark);
+    margin-bottom: 16px;
+    font-size: 1.3rem;
+    border-bottom: 2px dashed var(--gold-light);
+    padding-bottom: 10px;
+  }
+  .schedule-row {
+    display: flex;
+    gap: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f6ecec;
+    font-size: .95rem;
+  }
+  .schedule-row:last-child { border-bottom: none; }
+  .schedule-row .time { flex: 0 0 110px; font-weight: 700; color: var(--blue); }
+
+  /* Team */
+  #team { background: linear-gradient(180deg, #fbe9ee, #fdf5f3); }
+  .team-box {
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 50px;
+    text-align: center;
+    position: relative;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .team-box:hover { transform: scale(1.02); box-shadow: 0 18px 40px rgba(74,21,36,0.2); }
+  .team-box::before {
+    content: "🌹";
+    display: block;
+    font-size: 1.8rem;
+    margin-bottom: 14px;
+  }
+  .team-box p { max-width: 700px; margin: 0 auto 26px; color: #6b5158; }
+
+  .team-dept-group { margin-top: 44px; }
+  .team-dept-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 26px;
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--wine);
+  }
+  .team-dept-heading .dept-code {
+    background: linear-gradient(135deg, var(--blue), var(--rose));
+    color: #fff;
+    font-size: .8rem;
+    font-weight: 900;
+    padding: 5px 14px;
+    border-radius: 999px;
+    letter-spacing: .03em;
+  }
+  .team-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 28px;
+  }
+  .member-card {
+    width: 210px;
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 30px 18px;
+    text-align: center;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .member-card:hover { transform: translateY(-6px) scale(1.06); box-shadow: 0 18px 40px rgba(74,21,36,0.2); }
+  .member-card .avatar {
+    width: 130px; height: 130px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--gold-light);
+    box-shadow: var(--shadow);
+  }
+  .member-card h4 { font-family: var(--font-serif); font-size: 1.15rem; color: var(--wine); margin-bottom: 8px; }
+  .member-card .role-tag {
+    display: inline-block;
+    font-size: .8rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 999px;
+  }
+  .member-card .role-tag.head { color: #8a6a1f; background: rgba(205,163,85,0.2); }
+  .member-card .role-tag.vice { color: var(--rose-dark); background: rgba(216,87,127,0.12); }
+
+  /* Location */
+  .location-mosaic {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  @media (max-width: 780px) { .location-mosaic { grid-template-columns: 1fr; } }
+  .location-mosaic .loc-col { display: flex; flex-direction: column; gap: 18px; }
+  .location-card {
+    background: linear-gradient(135deg, var(--wine), var(--wine-deep));
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 34px 30px;
+    box-shadow: var(--shadow);
+  }
+  .location-card h3 { font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 18px; }
+  .location-card p { margin-bottom: 10px; font-size: .95rem; }
+  .location-card p strong { color: var(--gold-light); font-weight: 700; margin-right: 4px; }
+  .location-card a { color: var(--gold-light); text-decoration: underline; text-underline-offset: 3px; transition: color .2s; }
+  .location-card a:hover { color: #fff; }
+  .location-photo {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 2px solid var(--gold-light);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .location-photo:hover { transform: scale(1.03); box-shadow: 0 18px 40px rgba(74,21,36,0.2); }
+  .location-photo.tall { height: 260px; }
+  .location-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .4s ease;
+  }
+  .location-photo:hover img { transform: scale(1.1); }
+  .location-photo-row { display: flex; gap: 18px; }
+  .location-photo-row .location-photo { flex: 1; height: 150px; }
+
+  /* Pricing */
+  .price-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+  @media (max-width: 780px) { .price-grid { grid-template-columns: 1fr; } }
+  .price-card {
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 40px 30px;
+    text-align: center;
+    border-top: 6px solid var(--blue);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .price-card:hover { transform: translateY(-8px) scale(1.04); box-shadow: 0 18px 40px rgba(74,21,36,0.2); }
+  .price-card.highlight { border-top-color: var(--rose); }
+  .price-card h3 { font-family: var(--font-serif); font-size: 1.3rem; }
+  .price-card .amount {
+    font-size: 2.6rem;
+    font-weight: 900;
+    color: var(--wine);
+    margin: 14px 0;
+  }
+  .price-card .amount span { font-size: 1rem; font-weight: 400; color: #a68d94; }
+  .price-card ul { margin: 18px 0; text-align: left; color: #6b5158; font-size: .92rem; }
+  .price-card ul li { padding: 4px 0; }
+  .price-note {
+    text-align: center;
+    margin-top: 30px;
+    color: #a68d94;
+    font-size: .9rem;
+  }
+
+  /* FAQ */
+  .faq-item {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 14px;
+    overflow: hidden;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .faq-item:hover { transform: scale(1.015); box-shadow: 0 14px 32px rgba(74,21,36,0.18); }
+  .faq-item summary {
+    padding: 20px 24px;
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--wine);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    font-size: 1.4rem;
+    color: var(--rose);
+    transition: transform .2s;
+  }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item .faq-body { padding: 0 24px 20px; color: #6b5158; }
+
+  /* Footer */
+  footer {
+    background: linear-gradient(180deg, var(--wine), var(--wine-deep));
+    color: #e6cdd4;
+    padding: 60px 0 30px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  @media (max-width: 780px) { .footer-grid { grid-template-columns: 1fr; } }
+  footer h4 { font-family: var(--font-serif); color: var(--gold-light); margin-bottom: 16px; }
+  footer .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  footer .footer-brand img { width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--gold-light); }
+  footer .footer-brand span { font-family: var(--font-serif); font-weight: 700; font-size: 1.3rem; color: #fff; }
+  footer ul li { margin-bottom: 8px; font-size: .92rem; }
+  footer ul li a:hover { color: var(--rose); }
+  .footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(205,163,85,0.25);
+    padding-top: 24px;
+    font-size: .85rem;
+    color: #a68d94;
+  }
+
+  #back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(120deg, var(--rose), var(--rose-dark));
+    color: #fff;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(184,63,102,0.45);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s;
+    font-size: 1.2rem;
+    z-index: 998;
+  }
+  #back-to-top.show { opacity: 1; pointer-events: auto; }
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="logo">
+      <img src="assets/avatar.png" alt="CSIE x IM x PSY x NUR 迎新宿營 標誌">
+      <span>I'm 資想被用心呵護的工主殿下</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">首頁</a></li>
+      <li><a href="#depts">參與單位</a></li>
+      <li><a href="#schedule">活動時程</a></li>
+      <li><a href="#team">團隊介紹</a></li>
+      <li><a href="#location">活動地點</a></li>
+      <li><a href="#pricing">報名資訊</a></li>
+      <li><a href="#faq">常見問題</a></li>
+    </ul>
+    <a href="https://forms.gle/RVdqvQ6SWPbTMBXX6" class="nav-cta">點我報名</a>
+    <div class="nav-toggle" id="navToggle">☰</div>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="container">
+    <span class="hero-tag">🌹 NTU CSIE × IM × PSY × NUR 四系聯合迎新宿營</span>
+    <h1>I'm 資想被用心呵護的工主殿下</h1>
+    <p class="desc">2026 0831 - 0901</p>
+    <div class="hero-btns">
+      <a href="https://forms.gle/RVdqvQ6SWPbTMBXX6" class="btn btn-primary">立即報名</a>
+      <a href="#depts" class="btn btn-outline">更多資訊</a>
+    </div>
+  </div>
+</section>
+
+<div class="countdown-wrap">
+  <div class="container">
+    <h3>活動倒數</h3>
+    <div class="countdown" id="countdown">
+      <div class="box"><div class="num" id="cd-days">00</div><div class="label">天</div></div>
+      <div class="box"><div class="num" id="cd-hours">00</div><div class="label">時</div></div>
+      <div class="box"><div class="num" id="cd-mins">00</div><div class="label">分</div></div>
+      <div class="box"><div class="num" id="cd-secs">00</div><div class="label">秒</div></div>
+    </div>
+  </div>
+</div>
+
+<section id="depts">
+  <div class="container">
+    <h2 class="section-title">參與科系</h2>
+    <div class="divider"><span>🌹</span></div>
+    <div class="dept-grid">
+      <div class="dept-card">
+        <div class="icon">CSIE</div>
+        <h3>資訊工程學系</h3>
+      </div>
+      <div class="dept-card">
+        <div class="icon">IM</div>
+        <h3>資訊管理學系</h3>
+      </div>
+      <div class="dept-card">
+        <div class="icon">PSY</div>
+        <h3>心理學系</h3>
+      </div>
+      <div class="dept-card">
+        <div class="icon">NUR</div>
+        <h3>護理學系</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="schedule" style="background:#fff;">
+  <div class="container">
+    <h2 class="section-title">活動時程</h2>
+    <div class="divider"><span>🌹</span></div>
+    <p class="section-sub" style="margin-top:-30px;">三天兩夜豐富的行程（以營手冊為準）</p>
+
+    <div class="schedule-day">
+      <h3>Day 1・8/30</h3>
+      <div class="schedule-row"><div class="time">10:00</div><div>臺大集合、開幕與破冰</div></div>
+      <div class="schedule-row"><div class="time">12:00</div><div>前往營地</div></div>
+      <div class="schedule-row"><div class="time">13:30</div><div>大地遊戲</div></div>
+      <div class="schedule-row"><div class="time">17:00</div><div>晚餐</div></div>
+      <div class="schedule-row"><div class="time">18:40</div><div>假案</div></div>
+      <div class="schedule-row"><div class="time">22:00</div><div>消夜</div></div>
+    </div>
+
+    <div class="schedule-day">
+      <h3>Day 2・8/31</h3>
+      <div class="schedule-row"><div class="time">08:30</div><div>早餐</div></div>
+      <div class="schedule-row"><div class="time">09:30</div><div>RPG</div></div>
+      <div class="schedule-row"><div class="time">12:30</div><div>午餐</div></div>
+      <div class="schedule-row"><div class="time">13:30</div><div>水大地</div></div>
+      <div class="schedule-row"><div class="time">17:30</div><div>晚餐</div></div>
+      <div class="schedule-row"><div class="time">18:30</div><div>營火晚會</div></div>
+      <div class="schedule-row"><div class="time">21:30</div><div>消夜</div></div>
+    </div>
+
+    <div class="schedule-day">
+      <h3>Day 3・9/1</h3>
+      <div class="schedule-row"><div class="time">09:00</div><div>早餐</div></div>
+      <div class="schedule-row"><div class="time">10:00</div><div>賭場</div></div>
+      <div class="schedule-row"><div class="time">12:30</div><div>午餐烤肉</div></div>
+      <div class="schedule-row"><div class="time">14:30</div><div>大回顧</div></div>
+      <div class="schedule-row"><div class="time">16:00</div><div>回程</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="container">
+    <h2 class="section-title">團隊介紹</h2>
+    <div class="divider"><span>🌹</span></div>
+    <div class="team-box">
+      <p>四個系的工人們為你們精心準備這場宿營，先來認識一下召部吧！</p>
+    </div>
+    <div class="team-dept-group">
+      <h3 class="team-dept-heading"><span class="dept-code">CSIE</span>資訊工程學系</h3>
+      <div class="team-grid">
+        <div class="member-card">
+          <img class="avatar" src="assets/team/csie-head.jpg" onerror="this.onerror=null;this.src='assets/team/placeholder.svg'" alt="[召部姓名]">
+          <h4>張軒瑋</h4>
+          <span class="role-tag head">總召</span>
+        </div>
+        <div class="member-card">
+          <img class="avatar" src="assets/team/csie-vice.jpg" onerror="this.onerror=null;this.src='assets/team/placeholder.svg'" alt="[召部姓名]">
+          <h4>巫翊誠</h4>
+          <span class="role-tag vice">副召</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-dept-group">
+      <h3 class="team-dept-heading"><span class="dept-code">IM</span>資訊管理學系</h3>
+      <div class="team-grid">
+        <div class="member-card">
+          <img class="avatar" src="assets/team/im-head.jpg" onerror="this.onerror=null;this.src='assets/team/placeholder.svg'" alt="[召部姓名]">
+          <h4>黃歆淩</h4>
+          <span class="role-tag head">總召</span>
+        </div>
+        <div class="member-card">
+          <img class="avatar" src="assets/team/im-vice1.jpg" onerror="this.onerror=null;this.src='assets/team/placeholder.svg'" alt="[召部姓名]">
+          <h4>張宇昌</h4>
+          <span class="role-tag vice">副召</span>
+        </div>
+        <div class="member-card">
+          <img class="avatar" src="assets/team/im-vice2.jpg" onerror="this.onerror=null;this.src='assets/team/placeholder.svg'" alt="[召部姓名]">
+          <h4>許兌亦</h4>
+          <span class="role-tag vice">副召</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-dept-group">
+      <h3 class="team-dept-heading"><span class="dept-code">PSY</span>心理學系</h3>
+      <div class="team-grid">
+        <div class="member-card">
+          <img class="avatar" src="assets/team/psy-head.jpg" onerror="this.onerror=null;this.src='assets/team/placeholder.svg'" alt="[召部姓名]">
+          <h4>楊凱涵</h4>
+          <span class="role-tag head">總召</span>
+        </div>
+        <div class="member-card">
+          <img class="avatar" src="assets/team/psy-vice1.jpg" onerror="this.onerror=null;this.src='assets/team/placeholder.svg'" alt="[召部姓名]">
+          <h4>蔡秉妤</h4>
+          <span class="role-tag vice">副召</span>
+        </div>
+        <div class="member-card">
+          <img class="avatar" src="assets/team/psy-vice2.jpg" onerror="this.onerror=null;this.src='assets/team/placeholder.svg'" alt="[召部姓名]">
+          <h4>陳諾</h4>
+          <span class="role-tag vice">副召</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-dept-group">
+      <h3 class="team-dept-heading"><span class="dept-code">NUR</span>護理學系</h3>
+      <div class="team-grid">
+        <div class="member-card">
+          <img class="avatar" src="assets/team/nur-head.jpg" onerror="this.onerror=null;this.src='assets/team/placeholder.svg'" alt="[召部姓名]">
+          <h4>洪庭碩</h4>
+          <span class="role-tag head">總召</span>
+        </div>
+        <div class="member-card">
+          <img class="avatar" src="assets/team/nur-vice.jpg" onerror="this.onerror=null;this.src='assets/team/placeholder.svg'" alt="[召部姓名]">
+          <h4>莊喻翔</h4>
+          <span class="role-tag vice">副召</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="location" style="background:#fff;">
+  <div class="container">
+    <h2 class="section-title">活動地點</h2>
+    <div class="divider"><span>🌹</span></div>
+    <p class="section-sub" style="margin-top:-30px;">歡迎提前熟悉場地資訊</p>
+    <div class="location-mosaic">
+      <div class="loc-col">
+        <div class="location-card">
+          <h3>合歡自然生活體驗基地</h3>
+          <p><strong>地址：</strong><a href="https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E5%8C%97%E5%B8%82%E5%9D%AA%E6%9E%97%E5%8D%80%E6%B0%B4%E5%BE%B7%E9%87%8C%E8%8B%A6%E8%8B%93%E8%85%B33%E4%B9%8B3%E8%99%9F" target="_blank" rel="noopener">新北市坪林區水德里苦苓腳3之3號</a></p>
+          <p><strong>電話：</strong><a href="tel:0226656424">02 26656424</a></p>
+        </div>
+        <div class="location-photo tall">
+          <img src="assets/venue4.jpg" alt="營地河岸景觀">
+        </div>
+      </div>
+      <div class="loc-col">
+        <div class="location-photo tall">
+          <img src="assets/venue1.jpg" alt="營地帳篷區活動">
+        </div>
+        <div class="location-photo-row">
+          <div class="location-photo">
+            <img src="assets/venue3.jpg" alt="營地棚下休憩用餐區">
+          </div>
+          <div class="location-photo">
+            <img src="assets/venue2.jpg" alt="營火晚會活動">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="container">
+    <h2 class="section-title">報名資訊</h2>
+    <div class="divider"><span>🌹</span></div>
+    <div class="price-grid">
+      <div class="price-card">
+        <h3>早鳥價</h3>
+        <div class="amount">NT$4600<span></span></div>
+        <ul>
+          <li>✓ 早鳥期限：7/31 23:59</li>
+          <li>✓ 分科報名資訊另外公布！</li>
+        </ul>
+        <a href="https://forms.gle/RVdqvQ6SWPbTMBXX6" class="btn btn-outline" style="color:var(--blue); border-color:var(--blue);">立即報名</a>
+      </div>
+      <div class="price-card highlight">
+        <h3>一般價</h3>
+        <div class="amount">NT$4800<span></span></div>
+        <ul>
+          <li>✓ 報名期限：8/20 23:59</li>
+          <li>✓ 分科報名資訊另外公布！</li>
+        </ul>
+        <a href="https://forms.gle/RVdqvQ6SWPbTMBXX6" class="btn btn-primary">立即報名</a>
+      </div>
+    </div>
+    <p class="price-note">＊報名資格限臺大資工、資管、心理、護理系新生，詳細退費規則請見常見問題或報名表單</p>
+  </div>
+</section>
+
+<section id="faq" style="background:#fff;">
+  <div class="container">
+    <h2 class="section-title">常見問題</h2>
+    <div class="divider"><span>🌹</span></div>
+    <p class="section-sub" style="margin-top:-30px;">解答你對宿營的疑問</p>
+
+    <details class="faq-item">
+      <summary>報名後可以退費嗎？</summary>
+      <div class="faq-body">可以，以下為退費標準：
+        <br>於 115/8/24 23:59 前告知無法參加活動，則退報名費之70%
+        <br>於 115/8/25 00:00 至 115/8/27 23:59 告知無法參與活動，則退報名費之50%
+        <br>於 115/8/28 00:00 後告知無法參與活動，恕無法退費 
+        <br>營期第一天如遭遇颱風，將配合新北市政府宣布指引處理，例如取消、延期或縮減活動。若活動因天災或不可抗力因素取消，則扣除已支出費用後退費，並提供相關明細證明</div>
+    </details>
+    <details class="faq-item">
+      <summary>可以中途離開嗎？</summary>
+      <div class="faq-body">如果有事不能參與完整營隊的話，要提早填寫離營切結書並在離開前跟返回後告知隊輔並留下聯絡電話喔！(附件於報名表單中)</div>
+    </details>
+    <details class="faq-item">
+      <summary>會收手機嗎？</summary>
+      <div class="faq-body">進行假案時會收手機營造氣氛！隊輔會統一妥善保管。其他時候不限制！</div>
+    </details>
+    <details class="faq-item">
+      <summary>需要帶多少錢？</summary>
+      <div class="faq-body">第一天午餐會需要在臺大周邊探索，所以要帶一餐的錢！其他時候不會用到，但營地有小販部，可以帶一些現金備用</div>
+    </details>
+    <details class="faq-item">
+      <summary>時間撞到健檢怎麼辦？</summary>
+      <div class="faq-body">新生體檢的時間其實只是學校為了分流給的建議時間哦！所以其實不是只有那個時段可以去體檢。可以在8/28~9/3其他系的建議時間去保健中心體檢，不用擔心參加宿營會沒辦法體檢哦～</div>
+    </details>
+    <details class="faq-item">
+      <summary>可以自行前往營地嗎？</summary>
+      <div class="faq-body">我們早上會先在臺大集合破冰，中午才搭遊覽車前往營地，所以會統一前往喔！</div>
+    </details>
+    <details class="faq-item">
+      <summary>無法匯款怎麼辦？</summary>
+      <div class="faq-body">真的無法匯款的話可以透過官方IG或信箱聯絡我們，會另外提供繳費方式(如面交)！</div>
+    </details>
+    <details class="faq-item">
+      <summary>能交到新朋友嗎？</summary>
+      <div class="faq-body">宿營是一個很好認識大家、培養感情的活動，除了跟同屆可以更熟悉，也可以藉機跟學長姐有更多互動，特別是我們這次宿營是四系合辦，所以除了你們系上的同學，還可以結識其他系的朋友，宿營結束後大家都還是會保持聯繫，算是在大學生涯踏出舒適圈的第一站喔！</div>
+    </details>
+    <details class="faq-item">
+      <summary>假案是什麼活動？可以不參加嗎？</summary>
+      <div class="faq-body">假案會在夜間進行，帶點懸疑和推理的元素，小隊員們透過跑關拼湊出一個事件的真相。鼓勵大家參與，不過不強迫參加！</div>
+    </details>
+    <details class="faq-item">
+      <summary>可以不玩水嗎？</summary>
+      <div class="faq-body">希望大家都能享受水大地的樂趣，如果真的有顧慮也可以跟我們講，不強迫參加！</div>
+    </details>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/avatar.png" alt="活動標誌">
+          <span>I'm 資想被用心呵護的工主殿下</span>
+        </div>
+        <p>2026 NTU CSIE × IM × PSY × NUR 四系聯合迎新宿營</p>
+      </div>
+      <div>
+        <h4>快速連結</h4>
+        <ul>
+          <li><a href="#depts">參與單位</a></li>
+          <li><a href="#schedule">活動時程</a></li>
+          <li><a href="#pricing">報名資訊</a></li>
+          <li><a href="#faq">常見問題</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>聯絡我們</h4>
+        <ul>
+          <li>信箱： <a href="mailto:ntusuying2026@gmail.com">ntusuying2026@gmail.com</a></li>
+          <li>IG： <a href="https://www.instagram.com/ntu_csie.im.psy.nur_2026/" target="_blank" rel="noopener">@ntu_csie.im.psy.nur_2026</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 CSIE × IM × PSY × NUR 四系聯合迎新宿營籌備團隊 All Rights Reserved.
+    </div>
+  </div>
+</footer>
+
+<div id="back-to-top">↑</div>
+
+<script>
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Countdown — set your actual camp start date/time here
+  const targetDate = new Date('2026-08-31T10:00:00+08:00').getTime();
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+    const el = (id, val) => document.getElementById(id).textContent = String(Math.max(val, 0)).padStart(2, '0');
+    if (diff <= 0) {
+      el('cd-days', 0); el('cd-hours', 0); el('cd-mins', 0); el('cd-secs', 0);
+      return;
+    }
+    el('cd-days', Math.floor(diff / 86400000));
+    el('cd-hours', Math.floor((diff % 86400000) / 3600000));
+    el('cd-mins', Math.floor((diff % 3600000) / 60000));
+    el('cd-secs', Math.floor((diff % 60000) / 1000));
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Back to top button
+  const backToTop = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('show', window.scrollY > 400);
+  });
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+
+</body>
+</html>
