@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>I'm 資想被用心呵護的工主殿下 | NTU CSIE × IM × PSY × NUR 四系聯合迎新宿營</title>
 <link rel="icon" type="image/png" href="assets/avatar.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://ntu2026cipncamp.com/">
+<meta property="og:title" content="I'm 資想被用心呵護的工主殿下 | NTU CSIE × IM × PSY × NUR 四系聯合迎新宿營">
+<meta property="og:description" content="2026 CSIE × IM × PSY × NUR 四系聯合迎新宿營，一起在浪漫下午茶主題宿營認識彼此！">
+<meta property="og:image" content="http://ntu2026cipncamp.com/assets/thumbnail.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://ntu2026cipncamp.com/assets/thumbnail.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -23,7 +30,7 @@
     --font-serif: "Noto Serif TC", serif;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; font-size: 118%; }
   body {
     font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
     color: var(--text);
@@ -239,19 +246,19 @@
     box-shadow: var(--shadow);
     padding: 34px 20px;
     text-align: center;
-    transition: transform .25s ease, box-shadow .25s ease;
     border-top: 3px solid var(--gold);
   }
-  .dept-card:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 18px 40px rgba(74,21,36,0.2); }
   .dept-card .icon {
-    width: 64px; height: 64px;
-    line-height: 64px;
+    width: 96px; height: 96px;
     margin: 0 auto 16px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--blue), var(--rose));
-    color: #fff;
-    font-weight: 900;
-    font-size: 1.05rem;
+    padding: 4px;
+    box-sizing: border-box;
+  }
+  .dept-card .icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
   }
   .dept-card h3 { font-family: var(--font-serif); font-size: 1.15rem; margin-bottom: 8px; color: var(--wine); }
   .dept-card p { color: #8a7178; font-size: .9rem; }
@@ -264,9 +271,7 @@
     padding: 30px 32px;
     margin-bottom: 24px;
     border-left: 4px solid var(--rose);
-    transition: transform .25s ease, box-shadow .25s ease;
   }
-  .schedule-day:hover { transform: scale(1.02); box-shadow: 0 18px 40px rgba(74,21,36,0.2); }
   .schedule-day h3 {
     font-family: var(--font-serif);
     color: var(--rose-dark);
@@ -276,14 +281,42 @@
     padding-bottom: 10px;
   }
   .schedule-row {
-    display: flex;
-    gap: 20px;
-    padding: 10px 0;
     border-bottom: 1px solid #f6ecec;
     font-size: .95rem;
   }
   .schedule-row:last-child { border-bottom: none; }
+  .schedule-row summary {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 0;
+    cursor: pointer;
+    list-style: none;
+  }
+  .schedule-row summary::-webkit-details-marker { display: none; }
   .schedule-row .time { flex: 0 0 110px; font-weight: 700; color: var(--blue); }
+  .schedule-row .event-title { flex: 1; }
+  .schedule-row .arrow {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--rose);
+    font-size: 1.4rem;
+    font-weight: 700;
+    transition: color .2s ease, transform .25s ease;
+  }
+  .schedule-row .arrow::before { content: "+"; }
+  .schedule-row summary:hover .arrow { color: var(--rose-dark); }
+  .schedule-row[open] .arrow { color: var(--rose-dark); transform: rotate(45deg); }
+  .schedule-row .schedule-desc {
+    padding: 0 0 14px 130px;
+    color: #6b5158;
+    font-size: .88rem;
+  }
+  @media (max-width: 480px) {
+    .schedule-row .schedule-desc { padding-left: 0; }
+  }
 
   /* Team */
   #team { background: linear-gradient(180deg, #fbe9ee, #fdf5f3); }
@@ -294,9 +327,7 @@
     padding: 50px;
     text-align: center;
     position: relative;
-    transition: transform .25s ease, box-shadow .25s ease;
   }
-  .team-box:hover { transform: scale(1.02); box-shadow: 0 18px 40px rgba(74,21,36,0.2); }
   .team-box::before {
     content: "🌹";
     display: block;
@@ -338,9 +369,7 @@
     box-shadow: var(--shadow);
     padding: 30px 18px;
     text-align: center;
-    transition: transform .25s ease, box-shadow .25s ease;
   }
-  .member-card:hover { transform: translateY(-6px) scale(1.06); box-shadow: 0 18px 40px rgba(74,21,36,0.2); }
   .member-card .avatar {
     width: 130px; height: 130px;
     margin: 0 auto 16px;
@@ -385,6 +414,7 @@
     overflow: hidden;
     border: 2px solid var(--gold-light);
     transition: transform .25s ease, box-shadow .25s ease;
+    cursor: pointer;
   }
   .location-photo:hover { transform: scale(1.03); box-shadow: 0 18px 40px rgba(74,21,36,0.2); }
   .location-photo.tall { height: 260px; }
@@ -398,6 +428,39 @@
   .location-photo:hover img { transform: scale(1.1); }
   .location-photo-row { display: flex; gap: 18px; }
   .location-photo-row .location-photo { flex: 1; height: 150px; }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(26,8,14,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease;
+    z-index: 1000;
+  }
+  .lightbox.show { opacity: 1; pointer-events: auto; }
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 30px;
+    color: #fff;
+    font-size: 2.2rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color .2s;
+  }
+  .lightbox-close:hover { color: var(--gold-light); }
 
   /* Pricing */
   .price-grid {
@@ -506,11 +569,13 @@
     box-shadow: 0 8px 20px rgba(184,63,102,0.45);
     opacity: 0;
     pointer-events: none;
-    transition: opacity .3s;
+    cursor: pointer;
+    transition: opacity .3s, transform .2s ease, box-shadow .2s ease;
     font-size: 1.2rem;
     z-index: 998;
   }
   #back-to-top.show { opacity: 1; pointer-events: auto; }
+  #back-to-top:hover { transform: translateY(-4px) scale(1.08); box-shadow: 0 12px 26px rgba(184,63,102,0.6); }
 </style>
 </head>
 <body>
@@ -565,19 +630,19 @@
     <div class="divider"><span>🌹</span></div>
     <div class="dept-grid">
       <div class="dept-card">
-        <div class="icon">IM</div>
+        <div class="icon"><img src="assets/department/im.png" alt="資訊管理學系系徽"></div>
         <h3>資訊管理學系</h3>
       </div>
       <div class="dept-card">
-        <div class="icon">CSIE</div>
+        <div class="icon"><img src="assets/department/csie.png" alt="資訊工程學系系徽"></div>
         <h3>資訊工程學系</h3>
       </div>
       <div class="dept-card">
-        <div class="icon">PSY</div>
+        <div class="icon"><img src="assets/department/psy.png" alt="心理學系系徽"></div>
         <h3>心理學系</h3>
       </div>
       <div class="dept-card">
-        <div class="icon">NUR</div>
+        <div class="icon"><img src="assets/department/nur.png" alt="護理學系系徽"></div>
         <h3>護理學系</h3>
       </div>
     </div>
@@ -592,32 +657,32 @@
 
     <div class="schedule-day">
       <h3>Day 1・8/30</h3>
-      <div class="schedule-row"><div class="time">10:00</div><div>臺大集合、開幕與破冰</div></div>
-      <div class="schedule-row"><div class="time">12:00</div><div>前往營地</div></div>
-      <div class="schedule-row"><div class="time">13:30</div><div>大地遊戲</div></div>
-      <div class="schedule-row"><div class="time">17:00</div><div>晚餐</div></div>
-      <div class="schedule-row"><div class="time">18:40</div><div>假案</div></div>
-      <div class="schedule-row"><div class="time">22:00</div><div>消夜</div></div>
+      <details class="schedule-row"><summary><span class="time">10:00</span><span class="event-title">臺大集合、開幕與破冰</span><span class="arrow"></span></summary><div class="schedule-desc">透過破冰遊戲認識自己小隊的隊員、隊輔和其他小隊的人，順便初步了解臺大的環境🪄</div></details>
+      <details class="schedule-row"><summary><span class="time">12:00</span><span class="event-title">前往營地</span><span class="arrow"></span></summary><div class="schedule-desc">校外教學單子上會出現的，國道風光</div></details>
+      <details class="schedule-row"><summary><span class="time">13:30</span><span class="event-title">大地遊戲</span><span class="arrow"></span></summary><div class="schedule-desc">在兩兩小隊對抗中和小隊員培養默契，突破重重關卡！</div></details>
+      <details class="schedule-row"><summary><span class="time">17:00</span><span class="event-title">晚餐</span><span class="arrow"></span></summary><div class="schedule-desc">享用精心準備的晚餐，與隊友分享一天的收穫和感想</div></details>
+      <details class="schedule-row"><summary><span class="time">18:40</span><span class="event-title">假案</span><span class="arrow"></span></summary><div class="schedule-desc">在晚上和夥伴一起四處探險，透過和NPC互動拼湊出事件的真相🫵</div></details>
+      <details class="schedule-row"><summary><span class="time">22:00</span><span class="event-title">消夜</span><span class="arrow"></span></summary><div class="schedule-desc">假案結束，吃點消夜放輕鬆吧</div></details>
     </div>
 
     <div class="schedule-day">
       <h3>Day 2・8/31</h3>
-      <div class="schedule-row"><div class="time">08:30</div><div>早餐</div></div>
-      <div class="schedule-row"><div class="time">09:30</div><div>RPG</div></div>
-      <div class="schedule-row"><div class="time">12:30</div><div>午餐</div></div>
-      <div class="schedule-row"><div class="time">13:30</div><div>水大地</div></div>
-      <div class="schedule-row"><div class="time">17:30</div><div>晚餐</div></div>
-      <div class="schedule-row"><div class="time">18:30</div><div>營火晚會</div></div>
-      <div class="schedule-row"><div class="time">21:30</div><div>消夜</div></div>
+      <details class="schedule-row"><summary><span class="time">08:30</span><span class="event-title">早餐</span><span class="arrow"></span></summary><div class="schedule-desc">第二日之計在於晨！</div></details>
+      <details class="schedule-row"><summary><span class="time">09:30</span><span class="event-title">RPG</span><span class="arrow"></span></summary><div class="schedule-desc">在故事中一步步完成NPC的挑戰，從談話過程中找出線索並完成任務！</div></details>
+      <details class="schedule-row"><summary><span class="time">12:30</span><span class="event-title">午餐</span><span class="arrow"></span></summary><div class="schedule-desc">大太陽下跑RPG肯定累了吧？</div></details>
+      <details class="schedule-row"><summary><span class="time">13:30</span><span class="event-title">水大地</span><span class="arrow"></span></summary><div class="schedule-desc">在大地遊戲的基礎加入潑水活動，在炎熱夏日留下玩水的清爽回憶🐳</div></details>
+      <details class="schedule-row"><summary><span class="time">17:30</span><span class="event-title">晚餐</span><span class="arrow"></span></summary><div class="schedule-desc">玩水後就是要吃點好的補充體力</div></details>
+      <details class="schedule-row"><summary><span class="time">18:30</span><span class="event-title">營火晚會</span><span class="arrow"></span></summary><div class="schedule-desc">觀賞學長姐精彩的表演，還有營火讓大家一起享受溫馨的晚會！</div></details>
+      <details class="schedule-row"><summary><span class="time">21:30</span><span class="event-title">消夜</span><span class="arrow"></span></summary><div class="schedule-desc">吃點消夜放鬆一下吧</div></details>
     </div>
 
     <div class="schedule-day">
       <h3>Day 3・9/1</h3>
-      <div class="schedule-row"><div class="time">09:00</div><div>早餐</div></div>
-      <div class="schedule-row"><div class="time">10:00</div><div>賭場</div></div>
-      <div class="schedule-row"><div class="time">12:30</div><div>午餐烤肉</div></div>
-      <div class="schedule-row"><div class="time">14:30</div><div>大回顧</div></div>
-      <div class="schedule-row"><div class="time">16:00</div><div>回程</div></div>
+      <details class="schedule-row"><summary><span class="time">09:00</span><span class="event-title">早餐</span><span class="arrow"></span></summary><div class="schedule-desc">第三日之計在於晨！</div></details>
+      <details class="schedule-row"><summary><span class="time">10:00</span><span class="event-title">賭場</span><span class="arrow"></span></summary><div class="schedule-desc">透過各式各樣的遊戲贏得籌碼，並體驗競標的樂趣✨</div></details>
+      <details class="schedule-row"><summary><span class="time">12:30</span><span class="event-title">午餐烤肉</span><span class="arrow"></span></summary><div class="schedule-desc">用賭場競標到的食材大烤一波</div></details>
+      <details class="schedule-row"><summary><span class="time">14:30</span><span class="event-title">大回顧</span><span class="arrow"></span></summary><div class="schedule-desc">回顧三天兩夜的精彩瞬間</div></details>
+      <details class="schedule-row"><summary><span class="time">16:00</span><span class="event-title">回程</span><span class="arrow"></span></summary><div class="schedule-desc">帶著滿滿的回憶踏上歸途</div></details>
     </div>
   </div>
 </section>
@@ -640,12 +705,12 @@
         <div class="member-card">
           <img class="avatar" src="assets/team/im-vice1.jpg" onerror="this.onerror=null;this.src='assets/team/placeholder.svg'" alt="[召部姓名]">
           <h4>張宇昌</h4>
-          <span class="role-tag vice">副召</span>
+          <span class="role-tag vice">副召 / 活動長</span>
         </div>
         <div class="member-card">
           <img class="avatar" src="assets/team/im-vice2.jpg" onerror="this.onerror=null;this.src='assets/team/placeholder.svg'" alt="[召部姓名]">
           <h4>許兌亦</h4>
-          <span class="role-tag vice">副召</span>
+          <span class="role-tag vice">副召 / 總務場器長</span>
         </div>
       </div>
     </div>
@@ -661,7 +726,7 @@
         <div class="member-card">
           <img class="avatar" src="assets/team/csie-vice.jpg" onerror="this.onerror=null;this.src='assets/team/placeholder.svg'" alt="[召部姓名]">
           <h4>巫翊誠</h4>
-          <span class="role-tag vice">副召</span>
+          <span class="role-tag vice">副召 / 隊輔長</span>
         </div>
       </div>
     </div>
@@ -677,12 +742,12 @@
         <div class="member-card">
           <img class="avatar" src="assets/team/psy-vice1.jpg" onerror="this.onerror=null;this.src='assets/team/placeholder.svg'" alt="[召部姓名]">
           <h4>蔡秉妤</h4>
-          <span class="role-tag vice">副召</span>
+          <span class="role-tag vice">副召 / 活動長</span>
         </div>
         <div class="member-card">
           <img class="avatar" src="assets/team/psy-vice2.jpg" onerror="this.onerror=null;this.src='assets/team/placeholder.svg'" alt="[召部姓名]">
           <h4>陳諾</h4>
-          <span class="role-tag vice">副召</span>
+          <span class="role-tag vice">副召 / 總務場器長</span>
         </div>
       </div>
     </div>
@@ -698,7 +763,7 @@
         <div class="member-card">
           <img class="avatar" src="assets/team/nur-vice.jpg" onerror="this.onerror=null;this.src='assets/team/placeholder.svg'" alt="[召部姓名]">
           <h4>莊喻翔</h4>
-          <span class="role-tag vice">副召</span>
+          <span class="role-tag vice">副召 / 公關美宣長</span>
         </div>
       </div>
     </div>
@@ -797,6 +862,10 @@
       <div class="faq-body">新生體檢的時間其實只是學校為了分流給的建議時間哦！所以其實不是只有那個時段可以去體檢。可以在8/28~9/3其他系的建議時間去保健中心體檢，不用擔心參加宿營會沒辦法體檢哦～</div>
     </details>
     <details class="faq-item">
+      <summary>搬宿舍時間卡到宿營怎麼辦？</summary>
+      <div class="faq-body">8/29、8/30為大批報到日，不過8/31日起週一至五9:30~12:00、13:30~17:00也可以辦理入住！所以不用擔心～</div>
+    </details>
+    <details class="faq-item">
       <summary>可以自行前往營地嗎？</summary>
       <div class="faq-body">我們早上會先在臺大集合破冰，中午才搭遊覽車前往營地，所以會統一前往喔！</div>
     </details>
@@ -815,6 +884,10 @@
     <details class="faq-item">
       <summary>可以不玩水嗎？</summary>
       <div class="faq-body">希望大家都能享受水大地的樂趣，如果真的有顧慮也可以跟我們講，不強迫參加！</div>
+    </details>
+    <details class="faq-item">
+      <summary>報名費涵蓋哪些項目？</summary>
+      <div class="faq-body">包含場地、餐食、遊覽車、營服、保險、活動等費用</div>
     </details>
   </div>
 </section>
@@ -854,6 +927,11 @@
 
 <div id="back-to-top">↑</div>
 
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightboxClose">&times;</span>
+  <img id="lightboxImg" src="" alt="放大檢視">
+</div>
+
 <script>
   // Mobile nav toggle
   const navToggle = document.getElementById('navToggle');
@@ -885,6 +963,22 @@
     backToTop.classList.toggle('show', window.scrollY > 400);
   });
   backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Location photo lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+  document.querySelectorAll('.location-photo img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('show');
+    });
+  });
+  function closeLightbox() { lightbox.classList.remove('show'); }
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 </script>
 
 </body>
